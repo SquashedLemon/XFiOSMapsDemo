@@ -4,6 +4,9 @@ using Android.App;
 using Android.OS;
 using Android.Runtime;
 using Plugin.CurrentActivity;
+using XLabs.Ioc;
+using Pins.Helpers;
+using Autofac;
 
 namespace Pins.Droid
 {
@@ -14,6 +17,10 @@ namespace Pins.Droid
         public MainApplication(IntPtr handle, JniHandleOwnership transer)
           :base(handle, transer)
         {
+            if (!Resolver.IsSet)
+            {
+                SetIoc();
+            }
         }
 
         public override void OnCreate()
@@ -58,6 +65,17 @@ namespace Pins.Droid
 
         public void OnActivityStopped(Activity activity)
         {
+        }
+
+        void SetIoc()
+        {
+            var builder = new ContainerBuilder();
+
+            builder.RegisterInstance(Plugin.Geolocator.CrossGeolocator.Current).As<Plugin.Geolocator.Abstractions.IGeolocator>();
+            builder.RegisterInstance(Plugin.Permissions.CrossPermissions.Current).As<Plugin.Permissions.Abstractions.IPermissions>();
+            builder.RegisterInstance(Plugin.Connectivity.CrossConnectivity.Current).As<Plugin.Connectivity.Abstractions.IConnectivity>();
+
+            DependencyLocator.Container = builder.Build();
         }
     }
 }

@@ -4,6 +4,11 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Google.Maps;
+using Autofac;
+using Pins.Helpers;
+using XLabs.Ioc;
+using Pins.Utils;
 
 namespace Pins.iOS
 {
@@ -22,10 +27,30 @@ namespace Pins.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            MapServices.ProvideAPIKey(AppConstants.GOOGLE_MAPS_KEY);
+
             global::Xamarin.Forms.Forms.Init();
+            Xamarin.FormsMaps.Init();
+
+            if (!Resolver.IsSet)
+            {
+                SetIoc();
+            }
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        void SetIoc()
+        {
+            var builder = new ContainerBuilder();
+
+            builder.RegisterInstance(Plugin.Geolocator.CrossGeolocator.Current).As<Plugin.Geolocator.Abstractions.IGeolocator>();
+            builder.RegisterInstance(Plugin.Permissions.CrossPermissions.Current).As<Plugin.Permissions.Abstractions.IPermissions>();
+            builder.RegisterInstance(Plugin.Connectivity.CrossConnectivity.Current).As<Plugin.Connectivity.Abstractions.IConnectivity>();
+
+            DependencyLocator.Container = builder.Build();
         }
     }
 }
