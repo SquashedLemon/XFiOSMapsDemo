@@ -41,6 +41,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CustomMapView.cs" />
     <Compile Include="Controls\CustomNavigationPage.cs" />
     <Compile Include="Helpers\DependencyLocator.cs" />
     <Compile Include="MainPage.xaml.cs">
