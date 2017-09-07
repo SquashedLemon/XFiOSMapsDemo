@@ -9,5 +9,6 @@ namespace Pins.Utils
     public class AppConstants
     {
         public static readonly string GOOGLE_MAPS_KEY = "";
+        public static readonly string MAP_STYLE_FLAT = "";
     }
 }

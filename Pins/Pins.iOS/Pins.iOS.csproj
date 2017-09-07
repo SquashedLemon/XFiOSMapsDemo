@@ -89,7 +89,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\CustomMapViewRenderer.cs" />
     <Compile Include="Controls\ExtendedMapView.cs" />
+    <Compile Include="Helpers\CustomMapViewDelegate.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
