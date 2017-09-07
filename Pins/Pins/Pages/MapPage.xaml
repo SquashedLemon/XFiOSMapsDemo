@@ -12,6 +12,6 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <controls:CustomMapView Grid.Row="0" Grid.Column="0"/>
+        <controls:CustomMapView Grid.Row="0" Grid.Column="0" UserLocation="{Binding UserLocation}"/>
     </Grid>
 </controls:BaseContentPage>

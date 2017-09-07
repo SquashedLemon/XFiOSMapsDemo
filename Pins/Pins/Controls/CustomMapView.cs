@@ -1,4 +1,5 @@
-﻿using Plugin.Geolocator.Abstractions;
+﻿using Pins.Utils;
+using Plugin.Geolocator.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,6 +31,13 @@ namespace Pins.Controls
         {
             get { return (bool)GetValue(UserInteractionEnabledProperty); }
             set { SetValue(UserInteractionEnabledProperty, value); }
+        }
+
+        public static readonly BindableProperty UserLocationProperty = BindableProperty.Create("UserLocation", typeof(Position), typeof(CustomMapView), AppConstants.DEFAULT_USER_LOCATION, BindingMode.TwoWay);
+        public Position UserLocation
+        {
+            get { return (Position)GetValue(UserLocationProperty); }
+            set { SetValue(UserLocationProperty, value); }
         }
 
         public CustomMapView()

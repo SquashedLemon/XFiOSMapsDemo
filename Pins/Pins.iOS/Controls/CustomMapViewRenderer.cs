@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Pins.iOS.Helpers;
 using Google.Maps;
 using Pins.Utils;
+using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(CustomMapView), typeof(Pins.iOS.Controls.CustomMapViewRenderer))]
 namespace Pins.iOS.Controls
@@ -35,6 +36,26 @@ namespace Pins.iOS.Controls
 
                 mapView.Delegate = new CustomMapViewDelegate();
                 SetNativeControl(mapView);
+            }
+
+            if(formsElement != null)
+            {
+                mapView.UpdateUserPosition(formsElement.UserLocation.Latitude, formsElement.UserLocation.Longitude);
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+
+            var view = (CustomMapView)Element;
+
+            if (view != null)
+            {
+                if(e.PropertyName.Equals(CustomMapView.UserLocationProperty.PropertyName))
+                {
+                    mapView.UpdateUserPosition(view.UserLocation.Latitude, view.UserLocation.Longitude);
+                }
             }
         }
     }

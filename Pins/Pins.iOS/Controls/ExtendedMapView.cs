@@ -58,7 +58,10 @@ namespace Pins.iOS.Controls
             {
                 UserPositon = new CLLocationCoordinate2D(newLatitude, newLongitude);
                 if (UserPositionMarker == null)
+                {
                     UserPositionMarker = new Marker();
+                    UserPositionMarker.IconView = new UserLocationMarker();
+                }
 
                 UserPositionMarker.Map = null;
                 UserPositionMarker.Position = UserPositon;
