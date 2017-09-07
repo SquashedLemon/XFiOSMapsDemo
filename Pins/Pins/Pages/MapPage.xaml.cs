@@ -1,4 +1,5 @@
-﻿using Pins.Utils;
+﻿using Pins.Controls;
+using Pins.Utils;
 using Pins.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using Xamarin.Forms.Xaml;
 namespace Pins.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MapPage : ContentPage
+    public partial class MapPage : BaseContentPage
     {
         public MapPage()
         {
