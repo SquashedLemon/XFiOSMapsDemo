@@ -31,7 +31,7 @@ namespace Pins.iOS.Controls
             if (Control == null)
             {
                 mapView = new ExtendedMapView();
-                mapView.MapStyle = MapStyle.FromJson(AppConstants.MAP_STYLE_FLAT, null);
+                mapView.MapStyle = MapStyle.FromJson(AppConstants.MAP_STYLE_GREY, null);
 
                 mapView.Delegate = new CustomMapViewDelegate();
                 SetNativeControl(mapView);
