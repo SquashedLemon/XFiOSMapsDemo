@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Pins.Abstractions;
+using Pins.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Pins
@@ -12,13 +14,18 @@ namespace Pins
         public App()
         {
             InitializeComponent();
-
-            MainPage = new Pins.MainPage();
+            DependencyLocator.InitVMContainer();
         }
 
-        protected override void OnStart()
+        private Task InitNavigation()
         {
-            // Handle when your app starts
+            var navigationService = DependencyLocator.Resolve<INavigationService>();
+            return navigationService.InitializeAsync();
+        }
+
+        protected override async void OnStart()
+        {
+            await InitNavigation();
         }
 
         protected override void OnSleep()

@@ -6,7 +6,6 @@ using Foundation;
 using UIKit;
 using Google.Maps;
 using Autofac;
-using Pins.Helpers;
 using XLabs.Ioc;
 using Pins.Utils;
 

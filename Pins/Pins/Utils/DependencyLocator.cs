@@ -2,13 +2,14 @@
 using Pins.Abstractions;
 using Pins.Services;
 using Pins.Utils;
+using Pins.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pins.Helpers
+namespace Pins.Utils
 {
     public class DependencyLocator
     {
@@ -21,8 +22,10 @@ namespace Pins.Helpers
             //services
             vmBuilder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
             vmBuilder.RegisterType<AppConstants>().SingleInstance();
+            vmBuilder.RegisterType<UserDialogService>().As<IUserDialogService>().SingleInstance();
 
             //viewmodels
+            vmBuilder.RegisterType<MapViewModel>();
 
             vmBuilder.Update(Container);
         }

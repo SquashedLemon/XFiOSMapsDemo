@@ -1,5 +1,6 @@
 ﻿using Pins.Abstractions;
 using Pins.Controls;
+using Pins.Pages;
 using Pins.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Pins.Services
         public Task InitializeAsync()
         {
             //determines the first page
-            return NavigateToAsync<BaseViewModel>();
+            return NavigateToAsync<MapViewModel>();
         }
 
         public Task NavigateToAsync<TViewModel>() where TViewModel : BaseViewModel
@@ -73,7 +74,7 @@ namespace Pins.Services
         {
             Page page = CreatePage(viewModelType, parameter);
 
-            if (page is MainPage)
+            if (page is MapPage)
             {
                 Application.Current.MainPage = new CustomNavigationPage(page);
             }
