@@ -92,6 +92,7 @@
     <Compile Include="Controls\CustomMapViewRenderer.cs" />
     <Compile Include="Controls\ExtendedMapView.cs" />
     <Compile Include="Controls\UserLocationMarker.cs" />
+    <Compile Include="Controls\VerticalSliderRenderer.cs" />
     <Compile Include="Helpers\CustomMapViewDelegate.cs" />
     <Compile Include="Helpers\OSAppConstants.cs" />
     <Compile Include="Main.cs" />

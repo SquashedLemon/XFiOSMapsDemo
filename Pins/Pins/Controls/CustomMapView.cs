@@ -12,10 +12,10 @@ namespace Pins.Controls
 {
     public class CustomMapView : View
     {
-        public static readonly BindableProperty ZoomProperty = BindableProperty.Create("Zoom", typeof(int), typeof(CustomMapView), 10, BindingMode.TwoWay);
-        public int Zoom
+        public static readonly BindableProperty ZoomProperty = BindableProperty.Create("Zoom", typeof(double), typeof(CustomMapView), 6.0, BindingMode.TwoWay);
+        public double Zoom
         {
-            get { return (int)GetValue(ZoomProperty); }
+            get { return (double)GetValue(ZoomProperty); }
             set { SetValue(ZoomProperty, value); }
         }
 

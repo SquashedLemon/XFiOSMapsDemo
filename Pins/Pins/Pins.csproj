@@ -44,6 +44,7 @@
     <Compile Include="Controls\BaseContentPage.cs" />
     <Compile Include="Controls\CustomMapView.cs" />
     <Compile Include="Controls\CustomNavigationPage.cs" />
+    <Compile Include="Controls\VerticalSlider.cs" />
     <Compile Include="Models\PinModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Pages\MapPage.xaml.cs">

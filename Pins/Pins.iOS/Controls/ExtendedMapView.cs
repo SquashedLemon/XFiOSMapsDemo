@@ -17,10 +17,11 @@ namespace Pins.iOS.Controls
         public CLLocationCoordinate2D UserPositon { get; set; }
         Marker UserPositionMarker;
         Dictionary<string, Marker> mapMarkers;
-
-        public ExtendedMapView()
+        CustomMapViewRenderer formsElementRenderer;
+        public ExtendedMapView(CustomMapViewRenderer _formsElementRenderer)
         {
             mapMarkers = new Dictionary<string, Marker>();
+            formsElementRenderer = _formsElementRenderer;
         }
 
         public void DrawPath(CLLocationCoordinate2D desPosition)
@@ -100,6 +101,19 @@ namespace Pins.iOS.Controls
             Marker newMarker = new Marker() { Position = markerPosition, Title = title };
             mapMarkers[markerId] = newMarker;
             newMarker.Map = this;
+        }
+
+        public void UpdateZoom(float newZoom)
+        {
+            if(Camera.Zoom != newZoom)
+            {
+                MoveCamera(CameraUpdate.ZoomToZoom(newZoom));
+            }
+        }
+
+        public void SetCamera(double lat, double lon, float zoom)
+        {
+            Camera = CameraPosition.FromCamera(lat, lon, zoom);
         }
     }
 }

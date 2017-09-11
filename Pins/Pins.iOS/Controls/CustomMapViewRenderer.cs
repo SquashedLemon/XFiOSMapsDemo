@@ -31,16 +31,17 @@ namespace Pins.iOS.Controls
 
             if (Control == null)
             {
-                mapView = new ExtendedMapView();
+                mapView = new ExtendedMapView(this);
                 mapView.MapStyle = MapStyle.FromJson(AppConstants.MAP_STYLE_GREY, null);
 
                 mapView.Delegate = new CustomMapViewDelegate();
                 SetNativeControl(mapView);
             }
 
-            if(formsElement != null)
+            if (formsElement != null)
             {
                 mapView.UpdateUserPosition(formsElement.UserLocation.Latitude, formsElement.UserLocation.Longitude);
+                mapView.SetCamera(formsElement.UserLocation.Latitude, formsElement.UserLocation.Longitude, (float)formsElement.Zoom);
             }
         }
 
@@ -52,9 +53,13 @@ namespace Pins.iOS.Controls
 
             if (view != null)
             {
-                if(e.PropertyName.Equals(CustomMapView.UserLocationProperty.PropertyName))
+                if (e.PropertyName.Equals(CustomMapView.UserLocationProperty.PropertyName))
                 {
                     mapView.UpdateUserPosition(view.UserLocation.Latitude, view.UserLocation.Longitude);
+                }
+                else if (e.PropertyName.Equals(CustomMapView.ZoomProperty.PropertyName))
+                {
+                    mapView.UpdateZoom((float)view.Zoom);
                 }
             }
         }

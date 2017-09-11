@@ -29,6 +29,13 @@ namespace Pins.ViewModels
             set { _UserLocation = value; OnPropertyChanged("UserLocation"); }
         }
 
+        private double _Zoom = 6.0;
+        public double Zoom
+        {
+            get { return _Zoom; }
+            set { _Zoom = value; OnPropertyChanged("Zoom"); }
+        }
+
         public override async Task OnAppearing()
         {
             //permissions
