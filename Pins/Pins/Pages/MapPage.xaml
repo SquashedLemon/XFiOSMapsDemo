@@ -16,6 +16,6 @@
         <controls:CustomMapView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" UserLocation="{Binding UserLocation}" Zoom="{Binding Zoom}"/>
         
         <!--Overlay -->
-        <controls:VerticalSlider Grid.Row="0" Grid.Column="0"  Maximum="14.0" Minimum="6.0" Value="{Binding Zoom}" HeightRequest="350" HorizontalOptions="End" VerticalOptions="Center"/>
+        <controls:VerticalSlider Grid.Row="0" Grid.Column="0"  Maximum="15.0" Minimum="1.0" Value="{Binding Zoom}" HeightRequest="350" HorizontalOptions="End" VerticalOptions="Center"/>
     </Grid>
 </controls:BaseContentPage>

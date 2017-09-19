@@ -53,6 +53,16 @@ namespace Pins.ViewModels
                     return;
                 }
             }
+            else
+            {
+                geolocator.PositionChanged += Geolocator_PositionChanged;
+                await geolocator.StartListeningAsync(new TimeSpan(0, 1, 0), 25);
+            }
+        }
+
+        private void Geolocator_PositionChanged(object sender, PositionEventArgs e)
+        {
+            UserLocation = e.Position;
         }
 
         async Task GetPositionAsync()

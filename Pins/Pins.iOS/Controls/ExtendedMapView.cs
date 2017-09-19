@@ -61,6 +61,8 @@ namespace Pins.iOS.Controls
                 if (UserPositionMarker == null)
                 {
                     UserPositionMarker = new Marker();
+                    UserPositionMarker.Flat = true;
+                    UserPositionMarker.GroundAnchor = new CoreGraphics.CGPoint(0.5, 0.5);
                     UserPositionMarker.IconView = new UserLocationMarker();
                 }
 

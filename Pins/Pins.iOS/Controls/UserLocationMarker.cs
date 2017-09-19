@@ -11,14 +11,14 @@ namespace Pins.iOS.Controls
 {
     public class UserLocationMarker : UIView
     {
-        public UserLocationMarker() : base(new CoreGraphics.CGRect(200, 200, 100, 100))
+        public UserLocationMarker() : base(new CoreGraphics.CGRect(0, 0, 30, 30))
         {
-            var innerCircle = new UIView(new CoreGraphics.CGRect(45, 45, 10, 10));
+            var innerCircle = new UIView(new CoreGraphics.CGRect(10, 10, 10, 10));
             innerCircle.Layer.CornerRadius = 5;
             innerCircle.Layer.BackgroundColor = OSAppConstants.USER_MARKER_CGCOLOR;
             AddSubview(innerCircle);
 
-            var outerDisk = new UIView(new CoreGraphics.CGRect(35, 35, 30, 30));
+            var outerDisk = new UIView(new CoreGraphics.CGRect(0, 0, 30, 30));
             outerDisk.Layer.CornerRadius = 15;
             outerDisk.Layer.BackgroundColor = OSAppConstants.USER_MARKER_LIGHT_CGCOLOR;
 
@@ -27,12 +27,12 @@ namespace Pins.iOS.Controls
             scalingAnimation.Duration = 1.5;
             scalingAnimation.RepeatCount = float.MaxValue;
             scalingAnimation.AutoReverses = true;
-            scalingAnimation.From = NSNumber.FromFloat(1.0f);
-            scalingAnimation.To = NSNumber.FromFloat(1.5f);
+            scalingAnimation.From = NSNumber.FromFloat(0.5f);
+            scalingAnimation.To = NSNumber.FromFloat(1.0f);
             outerDisk.Layer.AddAnimation(scalingAnimation, "scale");
             AddSubview(outerDisk);
             
-            BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0);
+            //BackgroundColor = UIColor.FromRGBA(1, 1, 1, 0.5f);
         }
     }
 }
